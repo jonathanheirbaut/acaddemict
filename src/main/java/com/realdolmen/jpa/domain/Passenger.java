@@ -36,6 +36,8 @@ public class Passenger implements Serializable{
     @Basic(fetch = FetchType.LAZY)
     @Lob
     private byte[] picture;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUpdated;
 
     protected Passenger() {
     }
@@ -46,6 +48,16 @@ public class Passenger implements Serializable{
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.type = type;
+    }
+
+    @PrePersist
+    @PreUpdate
+    private void beforePersist(){
+        lastUpdated = new Date();
+    }
+
+    public Date getLastUpdated() {
+        return lastUpdated;
     }
 
     public Integer getId() {
@@ -81,7 +93,7 @@ public class Passenger implements Serializable{
     }
 
     public int getAge() {
-        LocalDate birthdate = new LocalDate (1970, 1, 20);
+        LocalDate birthdate = new LocalDate(birthDate);
         LocalDate now = new LocalDate();
         Years age = Years.yearsBetween(birthdate, now);
         return age.getYears();

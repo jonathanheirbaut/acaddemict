@@ -31,12 +31,21 @@ public class PassengerPersistenceTest extends PersistenceTest {
     }
 
     @Test
-    public void passengerAge() throws Exception {
+    public void passengerAgeIsCorrect() throws Exception {
         Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(633243600000L), PassengerType.OCCASIONAL);
         entityManager().persist(passenger);
 
         Passenger retrievedPassenger = entityManager().find(Passenger.class, passenger.getId());
         assertEquals(24, retrievedPassenger.getAge());
+    }
+
+    @Test
+    public void passengerLastUpdatedIsSet() throws Exception {
+        Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(), PassengerType.OCCASIONAL);
+        entityManager().persist(passenger);
+
+        Passenger retrievedPassenger = entityManager().find(Passenger.class, passenger.getId());
+        assertNotNull(retrievedPassenger.getLastUpdated());
     }
 
 
