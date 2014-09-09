@@ -26,7 +26,6 @@ public class PassengerPersistenceTest extends PersistenceTest {
         Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(), PassengerType.OCCASIONAL);
         entityManager().persist(passenger);
         passenger.setType(PassengerType.REGULAR);
-
         Passenger retrievedPassenger = entityManager().find(Passenger.class, passenger.getId());
         assertEquals(passenger, retrievedPassenger);
     }
