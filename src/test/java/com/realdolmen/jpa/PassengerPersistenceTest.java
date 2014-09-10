@@ -13,12 +13,18 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by JHRAU70 on 8/09/2014.
  */
-public class PassengerPersistenceTest extends PersistenceTest {
+public class PassengerPersistenceTest extends DataSetPersistenceTest {
     @Test
     public void passengerCanBePersisted() throws Exception {
         Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(), PassengerType.OCCASIONAL);
         entityManager().persist(passenger);
         assertNotNull(passenger.getId());
+    }
+
+    @Test
+    public void passengerCanBeRetrievedDBUnit() throws Exception {
+        Passenger passenger = entityManager().find(Passenger.class, 1);
+        assertEquals("George",passenger.getFirstName());
     }
 
     @Test
