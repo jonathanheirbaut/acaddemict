@@ -1,4 +1,4 @@
-package com.realdolmen.jpa.domain;
+package com.realdolmen.jpa.example;
 
 import javax.persistence.*;
 

@@ -1,5 +1,6 @@
 package com.realdolmen.jpa;
 
+import com.realdolmen.jpa.domain.Address;
 import com.realdolmen.jpa.domain.Passenger;
 import com.realdolmen.jpa.domain.PassengerId;
 import com.realdolmen.jpa.domain.PassengerType;
@@ -16,7 +17,8 @@ import static org.junit.Assert.assertNotNull;
 public class PassengerPersistenceTest extends DataSetPersistenceTest {
     @Test
     public void passengerCanBePersisted() throws Exception {
-        Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(), PassengerType.OCCASIONAL);
+        Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(), PassengerType.OCCASIONAL,
+                new Address("Schoolstraat 101", "","Wijnegem","2110","Belgie"));
         entityManager().persist(passenger);
         assertNotNull(passenger.getId());
     }
@@ -29,7 +31,8 @@ public class PassengerPersistenceTest extends DataSetPersistenceTest {
 
     @Test
     public void passengerCanBeUpdated() throws Exception {
-        Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(), PassengerType.OCCASIONAL);
+        Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(), PassengerType.OCCASIONAL,
+                new Address("Schoolstraat 101", "","Wijnegem","2110","Belgie"));
         entityManager().persist(passenger);
         passenger.setType(PassengerType.REGULAR);
         Passenger retrievedPassenger = entityManager().find(Passenger.class, passenger.getId());
@@ -38,7 +41,8 @@ public class PassengerPersistenceTest extends DataSetPersistenceTest {
 
     @Test
     public void passengerAgeIsCorrect() throws Exception {
-        Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(633243600000L), PassengerType.OCCASIONAL);
+        Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(633243600000L), PassengerType.OCCASIONAL,
+                new Address("Schoolstraat 101", "","Wijnegem","2110","Belgie"));
         entityManager().persist(passenger);
 
         Passenger retrievedPassenger = entityManager().find(Passenger.class, passenger.getId());
@@ -47,7 +51,8 @@ public class PassengerPersistenceTest extends DataSetPersistenceTest {
 
     @Test
     public void passengerLastUpdatedIsSet() throws Exception {
-        Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(), PassengerType.OCCASIONAL);
+        Passenger passenger = new Passenger("15-123456-45", "Heirbaut", "Jonathan", new Date(), PassengerType.OCCASIONAL,
+                new Address("Schoolstraat 101", "","Wijnegem","2110","Belgie"));
         entityManager().persist(passenger);
 
         Passenger retrievedPassenger = entityManager().find(Passenger.class, passenger.getId());

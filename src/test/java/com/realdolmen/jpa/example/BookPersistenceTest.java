@@ -1,6 +1,7 @@
-package com.realdolmen.jpa;
+package com.realdolmen.jpa.example;
 
-import com.realdolmen.jpa.domain.Book;
+import com.realdolmen.jpa.PersistenceTest;
+import com.realdolmen.jpa.example.Book;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

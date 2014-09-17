@@ -1,7 +1,10 @@
 package com.realdolmen.jpa.domain;
 
 import javax.persistence.*;
+import javax.persistence.metamodel.CollectionAttribute;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -16,6 +19,12 @@ public class Ticket {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateOfDeparture;
     private String destination;
+
+    @ManyToOne
+    private Passenger passenger;
+    @ManyToOne
+    private Flight flight;
+
 
     protected Ticket() {
     }

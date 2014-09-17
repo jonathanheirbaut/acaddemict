@@ -5,14 +5,17 @@ import org.joda.time.Years;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 
 /**
  * Created by JHRAU70 on 8/09/2014.
  */
 @Entity
-public class Passenger implements Serializable{
+public class Passenger implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
@@ -22,7 +25,7 @@ public class Passenger implements Serializable{
     private String firstName;
     @Column(length = 50)
     private String lastName;
-    private int frequentFlyerMiles;
+    private Integer frequentFlyerMiles;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private PassengerType type;
@@ -39,20 +42,32 @@ public class Passenger implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdated;
 
+    @Embedded
+    private Address address;
+
+    @OneToMany(mappedBy = "passenger")
+    private List<Ticket> tickets = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "preferences")
+    @Column(name = "preference")
+    private Collection<String> preferences = new ArrayList<>();
+
     protected Passenger() {
     }
 
-    public Passenger(String ssn, String firstName, String lastName, Date birthDate, PassengerType type) {
+    public Passenger(String ssn, String firstName, String lastName, Date birthDate, PassengerType type, Address address) {
         this.ssn = ssn;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.type = type;
+        this.address = address;
     }
 
     @PrePersist
     @PreUpdate
-    private void beforePersist(){
+    private void beforePersist() {
         lastUpdated = new Date();
     }
 
@@ -117,5 +132,13 @@ public class Passenger implements Serializable{
 
     public void setPicture(byte[] picture) {
         this.picture = picture;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

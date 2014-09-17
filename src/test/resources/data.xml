@@ -1,4 +1,16 @@
 <dataset>
-    <passenger id="1" ssn="000" birthDate="1990-01-25" firstName="George" lastName="Orwell" lastUpdated="2014-09-10" frequentFlyerMiles="0" type="OCCASIONAL"/>
-    <passenger id="2" ssn="000" birthDate="1990-01-25" firstName="Tom" lastName="Jerry" lastUpdated="2014-09-09" frequentFlyerMiles="0" type="OCCASIONAL"/>
+    <passenger id="1" ssn="000" birthDate="1990-01-25" firstName="George" lastName="Orwell" lastUpdated="2014-09-10"
+               frequentFlyerMiles="500" type="OCCASIONAL"  street1="Schoolstraat 11" city="Wijnegem" zipCode="2110" country="Belgie"/>
+    <passenger id="2" ssn="000" birthDate="1990-01-25" firstName="Tom" lastName="Jerry" lastUpdated="2014-09-09"
+               frequentFlyerMiles="500" type="OCCASIONAL" street1="Schildedreef 46" city="Schilde" zipCode="2970" country="Belgie"/>
+
+    <flight id="1" departureDate="2014-09-09" arrivalDate="2014-09-09" flightNumber="FL-15N" />
+    <flight id="2" departureDate="2014-09-10" arrivalDate="2014-09-11" flightNumber="FL-88D" />
+
+    <preferences passenger_id="1" preference="Veel eten onderweg" />
+    <preferences passenger_id="1" preference="Veel drinken onderweg" />
+
+    <ticket id="1" dateOfDeparture="2014-09-09" destination="Valencia" price="95.95" passenger_id="1" flight_id="1"/>
+
+
 </dataset>

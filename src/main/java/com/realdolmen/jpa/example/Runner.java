@@ -1,4 +1,6 @@
-package com.realdolmen.jpa.domain;
+package com.realdolmen.jpa.example;
+
+import com.realdolmen.jpa.example.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
