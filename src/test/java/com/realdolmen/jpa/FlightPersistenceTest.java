@@ -19,6 +19,7 @@ public class FlightPersistenceTest extends DataSetPersistenceTest {
 
     @Test
     public void testJenkinsFail(){
+        System.out.println();
         assertEquals("Test has to fial", true, false);
     }
 }
